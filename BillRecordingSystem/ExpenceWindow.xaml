@@ -1,0 +1,27 @@
+﻿<Window x:Class="BillRecordingSystem.ExpenceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BillRecordingSystem"
+        mc:Ignorable="d"
+        Title="Expence Window" Height="350" Width="450">
+    <Grid>
+        <Label x:Name="lblExpanceName" Content="Expance name" HorizontalAlignment="Left" Margin="51,33,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblExpenceType" Content="Type of expence" HorizontalAlignment="Left" Margin="51,64,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMoney" Content="Money Spent" HorizontalAlignment="Left" Margin="51,96,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblDate" Content="Date" HorizontalAlignment="Left" Margin="51,129,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblComment" Content="Comment" HorizontalAlignment="Left" Margin="51,159,0,0" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="boxLogin" HorizontalAlignment="Left" Height="23" Margin="163,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="244"/>
+        <TextBox x:Name="boxPassword" HorizontalAlignment="Left" Height="23" Margin="163,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="242"/>
+        <TextBox x:Name="boxFirstName" HorizontalAlignment="Left" Height="23" Margin="163,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="242"/>
+        <TextBox x:Name="boxMonthIncome" HorizontalAlignment="Left" Height="59" Margin="163,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="243"/>
+        <Button x:Name="btnConfirm" Content="Confirm"  HorizontalAlignment="Left" Margin="70,253,0,0" VerticalAlignment="Top" Width="92" Height="38"/>
+        <Button x:Name="btnDeny" Content="Deny" HorizontalAlignment="Left" Margin="273,254,0,0" VerticalAlignment="Top" Width="92" Height="38"/>
+        <DatePicker HorizontalAlignment="Left" Margin="163,123,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="170,253,0,0" VerticalAlignment="Top" Width="92" Height="38"/>
+
+
+    </Grid>
+</Window>
