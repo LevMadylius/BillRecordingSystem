@@ -5,34 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BillRecordingSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="600">
+        Title="Bill Recording System" Height="400" Width="600"
+        ResizeMode="NoResize">
     <Grid>
+        <Grid HorizontalAlignment="Left" Height="369" VerticalAlignment="Top" Width="178">
+            <Rectangle HorizontalAlignment="Left" Height="369" VerticalAlignment="Top" Width="178">
+                <Rectangle.Fill>
+                    <LinearGradientBrush SpreadMethod="Reflect">
+                        <GradientStop Color="#FF2ED4CD" Offset="0.5"/>
+                        <GradientStop Color="Blue" Offset="0" />
 
-        <Rectangle Fill="Wheat" HorizontalAlignment="Left" Height="369" Margin="0,0,0,-1" VerticalAlignment="Top" Width="178"/>
-        <Border BorderBrush="Black" BorderThickness="2" Height="120" Width="120" Margin="28,16,444,233">
-            <Image x:Name="ProfileImage" HorizontalAlignment="Left" Height="120"  VerticalAlignment="Top" Width="120"/>
-        </Border>
-        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Background="Transparent" Margin="29,152,0,0" VerticalAlignment="Top" Width="117"/>
-        <Label x:Name="lblName" Content="Label" Margin="30,190,447,153"/>
-        <Label x:Name="lblSalary" Content="Label" Margin="30,244,447,99"/>
+                        <GradientStop Color="#FF87FD64" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Border BorderBrush="Black" BorderThickness="2" Height="120" Width="120" Margin="29,14,29,235">
+                <Image x:Name="ProfileImage" HorizontalAlignment="Left" Height="120"  VerticalAlignment="Top" Width="120"/>
+            </Border>
+            <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Background="Transparent" Margin="29,152,0,0" VerticalAlignment="Top" Width="117"/>
+            <Label x:Name="lblName" Content="Label" Margin="30,192,98,151" />
+            <Label x:Name="lblSalary" Content="Label" Margin="30,244,34,99"/>
+            <Label x:Name="lblTotalExpence" Content="Label" Margin="30,298,33,45"/>
+        </Grid>
 
-        <Label x:Name="lblTotalExpence" Content="Label" Margin="30,298,447,45"/>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="369" Margin="177,-2,-1,0" VerticalAlignment="Top" Width="416">
-            <TabItem Header="TabItem" Width="208">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="My Expances" Width="208">
+                <Grid Background="White"/>
             </TabItem>
-            <TabItem Header="TabItem" Width="204" >
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="Statictics" Width="204" >
+                <Grid Background="White"/>
             </TabItem>
         </TabControl>
-
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>-->
-
-
-
 
     </Grid>
 </Window>
