@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using BillRecordingSystem.DB;
+using BillRecordingSystem.Classes;
 namespace BillRecordingSystem
 {
     /// <summary>
@@ -27,34 +28,46 @@ namespace BillRecordingSystem
         public MainWindow()
         {
             InitializeComponent();
+            SetFromToPickers();
+            SetListExpances();
 
-            
-
-            var list = new ObservableCollection<Test>();
-            list.Add(new Test());
-            list.Add(new Test());
-            list.Add(new Test());
-            list.Add(new Test());
-
-            gridExpences.ItemsSource = list;
-
-            var el = gridExpences.SelectedItem as Test;
         }
 
-        class Test
+        private void SetFromToPickers()
         {
-            public string var1 { get; set; } = "1421";
-            public string var2 { get; set; } = "1421";
-            public string var3 { get; set; } = "1421";
-            public string var4 { get; set; } = "1421";
-            public string var5 { get; set; } = "markopidar";
+            if (Queries.CheckIfExpencesEmpty(UserInfo.UserId))
+            {
+                DateTime EarliestExpenceDate = Queries.GetDateOfEarliestExpence(UserInfo.UserId);
+                DateTime LatestExpenceDate = Queries.GetDateOfLatestExpence(UserInfo.UserId);
 
+                dateFrom.SelectedDate = EarliestExpenceDate;
+                dateTo.SelectedDate = LatestExpenceDate;
+            }
+        }
+        // All expences of current user.
+        private async void SetListExpances()
+        {
+            if (Queries.CheckIfExpencesEmpty(UserInfo.UserId))
+            {             
+                List<Expences> list = await Task.Run<List<Expences>>(() => Queries.GetListExpances(UserInfo.UserId));
+                gridExpences.ItemsSource =  list;
+            }
         }
 
         private void btnAddExpance_Click(object sender, RoutedEventArgs e)
         {
             ExpenceWindow ew = new ExpenceWindow();
             ew.Show();
+        }
+
+        private void btnFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            SetListExpances();
         }
     }
 }

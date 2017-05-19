@@ -72,20 +72,21 @@ namespace BillRecordingSystem
             return result;
         }
 
-        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        private async void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
             Expences expence;
             try
             {
                 expence = GetExpenceFromData();
-                Queries.InsertExpence(expence);
+                await Task.Run(()=> Queries.InsertExpence(expence));
+                this.Close();
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Incorrect parameters,please try again");
             }
 
-            this.Close();
+            
         }
     }
 }

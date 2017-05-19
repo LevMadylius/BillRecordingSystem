@@ -49,6 +49,62 @@ namespace BillRecordingSystem.DB
             }
         }
 
-       
+        public static DateTime GetDateOfEarliestExpence(int userId)
+        {
+            using (var db = new DBExpenceContext())
+            {
+                var query = (from e in db.Expences
+                             where e.IdUser == userId
+                             select e.BillDate).Min();
+
+                return query;
+                            
+            }
+        }
+
+        public static DateTime GetDateOfLatestExpence(int userId)
+        {
+            using (var db = new DBExpenceContext())
+            {
+                var query = (from e in db.Expences
+                             where e.IdUser == userId
+                             select e.BillDate).Max();
+
+                return query;
+
+            }
+        }
+
+        public static bool CheckIfExpencesEmpty(int userId)
+        {
+            using (var db = new DBExpenceContext())
+            {
+               bool result = db.Expences.Any(e => e.IdUser == userId);
+
+               return result;
+
+            }
+        }
+
+        public static List<Expences> GetListExpances(int userId)
+        {
+            using (var db = new DBExpenceContext())
+            {
+                var query = (from e in db.Expences
+                             where e.IdUser == userId
+                             select e).ToList();
+
+                foreach (var el in query)
+                {
+                    el.ExpenceTypes = (from t in db.ExpenceTypes
+                                       where t.IdExpenceType == el.IdExpenceType
+                                       select t).Single();
+                }
+
+
+                return query;
+
+            }
+        }
     }
 }
