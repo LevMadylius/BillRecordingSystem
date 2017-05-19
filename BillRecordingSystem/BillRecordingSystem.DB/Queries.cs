@@ -13,7 +13,6 @@ namespace BillRecordingSystem.DB
         {
             using (var db = new DBExpenceContext())
             {
-                int id = 1;
                 
                 var query= (from t in db.ExpenceTypes
                            where text == t.Name
