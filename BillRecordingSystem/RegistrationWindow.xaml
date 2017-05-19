@@ -13,18 +13,20 @@
         <Button x:Name="btnImage" Content="Open" Background="Transparent" HorizontalAlignment="Left" Margin="86,151,0,0" VerticalAlignment="Top" Width="119"/>
         <Label x:Name="lblLogin" Content="Login Name" HorizontalAlignment="Left" Margin="27,199,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="27,230,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblFirstName" Content="First name" HorizontalAlignment="Left" Margin="27,262,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblLastname" Content="Last name" HorizontalAlignment="Left" Margin="27,295,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblMonthSalary" Content="Month Income" HorizontalAlignment="Left" Margin="27,325,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblFirstName" Content="First name" HorizontalAlignment="Left" Margin="27,301,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblLastname" Content="Last name" HorizontalAlignment="Left" Margin="27,334,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMonthSalary" Content="Month Income" HorizontalAlignment="Left" Margin="27,364,0,0" VerticalAlignment="Top"/>
 
         <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" Background="Transparent" Margin="33,398,0,0" VerticalAlignment="Top" Width="90"/>
         <Button x:Name="btnDeny" Content="Deny" HorizontalAlignment="Left" Margin="161,399,0,0" Background="Transparent" VerticalAlignment="Top" Width="90"/>
-        
+
         <TextBox x:Name="boxLogin" HorizontalAlignment="Left" Height="23" Margin="139,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="boxPassword" HorizontalAlignment="Left" Height="23" Margin="139,229,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="boxFirstName" HorizontalAlignment="Left" Height="23" Margin="139,258,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="boxLastName" HorizontalAlignment="Left" Height="23" Margin="139,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="boxMonthIncome" HorizontalAlignment="Left" Height="23" Margin="139,322,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="boxPassword" HorizontalAlignment="Left" Height="23" Margin="139,229,0,0"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="boxFirstName" HorizontalAlignment="Left" Height="23" Margin="139,297,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="boxLastName" HorizontalAlignment="Left" Height="23" Margin="139,329,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="boxMonthIncome" HorizontalAlignment="Left" Height="23" Margin="139,361,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblConfirmPassword" Content="Confirm Password" HorizontalAlignment="Left" Margin="27,265,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="boxConfirmPassword" HorizontalAlignment="Left" Height="23" Margin="139,263,0,0"  VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
