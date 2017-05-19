@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BillRecordingSystem.DB;
+using BillRecordingSystem.Classes;
 
 namespace BillRecordingSystem
 {
@@ -22,6 +25,23 @@ namespace BillRecordingSystem
         public LoginWindow()
         {
             InitializeComponent();
+        }
+
+        
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                UserInfo.UserId = Queries.GetUserId(LoginBox.Text, Encryptor.MD5Hash(passwordBox.Password));
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Wrong username or password. Please, try again");
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BillRecordingSystem.DB;
+using BillRecordingSystem.Classes;
 
 namespace BillRecordingSystem
 {
@@ -66,7 +67,7 @@ namespace BillRecordingSystem
             result.Comment = comment;
             result.MonthAmount = moneyValue;
             result.IdExpenceType = idType;
-            result.IdUser = UserInfo.IdUser;
+            result.IdUser = UserInfo.UserId;
 
             return result;
         }

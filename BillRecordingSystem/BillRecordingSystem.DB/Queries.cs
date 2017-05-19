@@ -34,5 +34,19 @@ namespace BillRecordingSystem.DB
                 db.SaveChanges();
             }
         }
+
+        public static int GetUserId(string login,string password)
+        {
+            using (var db = new DBExpenceContext())
+            {
+                var query = (from li in db.LoginInfo
+                            where li.Pass == password && li.LoginName == login
+                            select li).SingleOrDefault();
+                var loginInfo = query as LoginInfo;
+                if (loginInfo == null)
+                    throw new Exception();
+                return loginInfo.IdUser;
+            }
+        }
     }
 }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillRecordingSystem.UI", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillRecordingSystem.DB", "BillRecordingSystem.DB\BillRecordingSystem.DB.csproj", "{9AC89707-285B-4D62-A20F-2E50A210F421}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillRecordingSystem.Classes", "..\BillRecordingSystem.Classes\BillRecordingSystem.Classes.csproj", "{B2B2D119-C02B-4E4D-84E3-F7812AE3A62B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9AC89707-285B-4D62-A20F-2E50A210F421}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AC89707-285B-4D62-A20F-2E50A210F421}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AC89707-285B-4D62-A20F-2E50A210F421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2B2D119-C02B-4E4D-84E3-F7812AE3A62B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2B2D119-C02B-4E4D-84E3-F7812AE3A62B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2B2D119-C02B-4E4D-84E3-F7812AE3A62B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2B2D119-C02B-4E4D-84E3-F7812AE3A62B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

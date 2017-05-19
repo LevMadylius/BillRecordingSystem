@@ -127,6 +127,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BillRecordingSystem.Classes\BillRecordingSystem.Classes.csproj">
+      <Project>{b2b2d119-c02b-4e4d-84e3-f7812ae3a62b}</Project>
+      <Name>BillRecordingSystem.Classes</Name>
+    </ProjectReference>
     <ProjectReference Include="BillRecordingSystem.DB\BillRecordingSystem.DB.csproj">
       <Project>{9ac89707-285b-4d62-a20f-2e50a210f421}</Project>
       <Name>BillRecordingSystem.DB</Name>
