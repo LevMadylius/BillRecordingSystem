@@ -51,5 +51,10 @@ namespace BillRecordingSystem
 
         }
 
+        private void btnAddExpance_Click(object sender, RoutedEventArgs e)
+        {
+            ExpenceWindow ew = new ExpenceWindow();
+            ew.Show();
+        }
     }
 }

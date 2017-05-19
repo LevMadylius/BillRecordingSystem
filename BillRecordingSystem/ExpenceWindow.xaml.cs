@@ -77,12 +77,15 @@ namespace BillRecordingSystem
             Expences expence;
             try
             {
-                 expence = GetExpenceFromData();
+                expence = GetExpenceFromData();
+                Queries.InsertExpence(expence);
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Incorrect parameters,please try again");
             }
+
+            this.Close();
         }
     }
 }

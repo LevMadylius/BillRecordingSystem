@@ -28,7 +28,6 @@ namespace BillRecordingSystem
         }
 
         
-
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             try

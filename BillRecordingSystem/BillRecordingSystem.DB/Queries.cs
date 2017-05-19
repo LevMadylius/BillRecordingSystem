@@ -18,7 +18,8 @@ namespace BillRecordingSystem.DB
                            where text == t.Name
                            select t).SingleOrDefault();
                 var type = query as ExpenceTypes;
-
+                if (type == null)
+                    throw new Exception();
 
                 return type.IdExpenceType;
             }
@@ -47,5 +48,7 @@ namespace BillRecordingSystem.DB
                 return loginInfo.IdUser;
             }
         }
+
+       
     }
 }
