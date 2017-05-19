@@ -37,12 +37,13 @@
                     <DatePicker HorizontalAlignment="Left" Margin="342,9,0,0" VerticalAlignment="Top" Width="105"/>
                     <Label x:Name="lblFrom" Content="From:" HorizontalAlignment="Left" Margin="138,8,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="blbTo" Content="Up to:" HorizontalAlignment="Left" Margin="297,8,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="gridExpences" HorizontalAlignment="Left" Margin="12,91,0,0" VerticalAlignment="Top" Height="240" Width="435" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False">
+                    <DataGrid x:Name="gridExpences" SelectedIndex="1" HorizontalAlignment="Left" Margin="12,91,0,0" VerticalAlignment="Top" Height="240" Width="435" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn  Header="Name" IsReadOnly="True" Width="4*" CanUserResize="False"/>
-                            <DataGridCheckBoxColumn  ClipboardContentBinding="{x:Null}" Header="Type" Width="4*"/>
-                            <DataGridCheckBoxColumn  CanUserResize="False" ClipboardContentBinding="{x:Null}" Header="Total Price" Width="4*"/>
-                            <DataGridCheckBoxColumn  Header="Date" Width="4*"/>
+
+                            <DataGridTextColumn Binding="{Binding var1}"  Header="Name" IsReadOnly="True" Width="4*" CanUserResize="False"/>
+                            <DataGridTextColumn Binding="{Binding var2}"  Header="Type" Width="4*"/>
+                            <DataGridTextColumn Binding="{Binding var3}" CanUserResize="False" Header="Total Price" Width="4*"/>
+                            <DataGridTextColumn Binding="{Binding var4}" Header="Date" Width="4*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <ComboBox x:Name="c" HorizontalAlignment="Left" Margin="12,49,0,0" VerticalAlignment="Top" Width="120"/>
