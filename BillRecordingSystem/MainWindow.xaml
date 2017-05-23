@@ -43,7 +43,7 @@
                     <DatePicker Name="dateTo" HorizontalAlignment="Left" Margin="342,9,0,0" VerticalAlignment="Top" Width="105"/>
                     <Label x:Name="lblFrom" Content="From:" HorizontalAlignment="Left" Margin="138,8,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="blbTo" Content="Up to:" HorizontalAlignment="Left" Margin="297,8,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="gridExpences" SelectedIndex="1" HorizontalAlignment="Left" Margin="12,91,0,0" VerticalAlignment="Top" Height="240" Width="435" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False">
+                    <DataGrid x:Name="gridExpences" SelectedIndex="1" HorizontalAlignment="Left" Margin="12,91,0,0" VerticalAlignment="Top" Height="240" Width="435" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" MouseDoubleClick="gridExpences_MouseDoubleClick">
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Binding="{Binding Name}"  Header="Name" IsReadOnly="True" Width="4*" CanUserResize="False"/>

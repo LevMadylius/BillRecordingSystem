@@ -21,7 +21,6 @@ namespace BillRecordingSystem
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     
-    //створити binding list до listview 
 
     public partial class MainWindow : Window
     {
@@ -68,6 +67,22 @@ namespace BillRecordingSystem
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             SetListExpances();
+            SetFromToPickers();
+        }
+
+        private void gridExpences_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (sender != null)
+            {
+                DataGrid grid = sender as DataGrid;
+                if (grid != null && grid.SelectedItems != null && grid.SelectedItems.Count == 1)
+                {
+                    var expence = grid.SelectedItem as Expences;
+
+                    ExpenceWindow expenceWindow = new ExpenceWindow(expence);
+                    expenceWindow.Show();
+                }
+            }
         }
     }
 }

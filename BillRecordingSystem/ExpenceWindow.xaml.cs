@@ -21,11 +21,42 @@ namespace BillRecordingSystem
     /// </summary>
     public partial class ExpenceWindow : Window
     {
+        private Expences _expence;
+
         public ExpenceWindow()
         {
             InitializeComponent();
 
             btnEdit.Visibility = Visibility.Hidden;
+        }
+
+        public ExpenceWindow(Expences expence)
+        {
+            InitializeComponent();
+
+            _expence = expence;
+
+            btnConfirm.Visibility = Visibility.Hidden;
+            btnDeny.Visibility = Visibility.Hidden;
+            SetIsEnabledFalse();
+            SetExpenceFields();
+        }
+
+        private void SetIsEnabledFalse()
+        {
+            boxName.IsEnabled = false;
+            boxMoney.IsEnabled = false;
+            boxComment.IsEnabled = false;
+            DatePicker.IsEnabled = false;
+            comboType.IsEnabled = false;
+        }
+        private void SetIsEnabledTrue()
+        {
+            boxName.IsEnabled = true;
+            boxMoney.IsEnabled = true;
+            boxComment.IsEnabled = true;
+            DatePicker.IsEnabled = true;
+            comboType.IsEnabled = true;
         }
 
         private Expences GetExpenceFromData()
@@ -68,8 +99,20 @@ namespace BillRecordingSystem
             result.MonthAmount = moneyValue;
             result.IdExpenceType = idType;
             result.IdUser = UserInfo.UserId;
+            result.IdExpence = (_expence != null) ? _expence.IdExpence : 0;
 
             return result;
+        }
+
+        private void SetExpenceFields()
+        {
+            boxComment.Text = _expence.Comment;
+            boxName.Text = _expence.Name;
+            boxMoney.Text = _expence.MonthAmount.ToString();
+            DatePicker.Text = _expence.BillDate.ToString();
+
+
+            comboType.Text = _expence.ExpenceTypes.Name;
         }
 
         private async void btnConfirm_Click(object sender, RoutedEventArgs e)
@@ -87,6 +130,22 @@ namespace BillRecordingSystem
             }
 
             
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            SetIsEnabledTrue();
+
+            btnEdit.Visibility = Visibility.Hidden;
+            btnConfirm.Visibility = Visibility.Visible;
+            btnDeny.Visibility = Visibility.Visible;
+
+            
+        }
+
+        private void btnDeny_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

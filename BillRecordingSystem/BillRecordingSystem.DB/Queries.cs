@@ -29,11 +29,23 @@ namespace BillRecordingSystem.DB
         {
             using (var db = new DBExpenceContext())
             {
-                db.Expences.Add(expence);
+
+                var id = expence.IdExpence;
+                if (db.Expences.Any(e => e.IdExpence == id))
+                {
+                    db.Expences.Attach(expence);
+                    db.Entry(expence).State = System.Data.Entity.EntityState.Modified;
+                }
+                else
+                {
+                    db.Expences.Add(expence);
+                }
 
                 db.SaveChanges();
             }
         }
+
+        
 
         public static int GetUserId(string login,string password)
         {
