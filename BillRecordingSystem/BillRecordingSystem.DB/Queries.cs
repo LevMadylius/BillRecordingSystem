@@ -24,7 +24,7 @@ namespace BillRecordingSystem.DB
                 return type.IdExpenceType;
             }
         }
-
+        //Updates if record exists inserts if there is no such record
         public static void InsertExpence(Expences expence)
         {
             using (var db = new DBExpenceContext())
@@ -45,7 +45,38 @@ namespace BillRecordingSystem.DB
             }
         }
 
-        
+        public static void RegisterUser(Users user, LoginInfo loginInfo)
+        {
+            using (var db = new DBExpenceContext())
+            {
+
+                var userId = user.IdUser;
+                //var b = db.Users.Any(e => e.IdUser == userId);
+
+
+                if (db.LoginInfo.Any(li => li.LoginName == loginInfo.LoginName))
+                    throw new Exception("User with this login name already exists");
+
+                if (db.Users.Any(e => e.IdUser == userId))
+                {
+                    db.Users.Attach(user);
+                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+
+                    db.LoginInfo.Attach(loginInfo);
+                    db.Entry(loginInfo).State = System.Data.Entity.EntityState.Modified;
+                }
+                else
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+
+                    loginInfo.IdUser = user.IdUser;
+                    db.LoginInfo.Add(loginInfo);
+                }
+
+                db.SaveChanges();
+            }
+        }
 
         public static int GetUserId(string login,string password)
         {

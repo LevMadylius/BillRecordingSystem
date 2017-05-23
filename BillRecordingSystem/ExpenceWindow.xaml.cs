@@ -64,6 +64,7 @@ namespace BillRecordingSystem
             var result = new Expences();
 
             string name;
+            //50 is max length
             if (boxName.Text == "" || boxName.Text.Length > 50)
             {
                 throw new Exception();
@@ -138,9 +139,7 @@ namespace BillRecordingSystem
 
             btnEdit.Visibility = Visibility.Hidden;
             btnConfirm.Visibility = Visibility.Visible;
-            btnDeny.Visibility = Visibility.Visible;
-
-            
+            btnDeny.Visibility = Visibility.Visible;            
         }
 
         private void btnDeny_Click(object sender, RoutedEventArgs e)

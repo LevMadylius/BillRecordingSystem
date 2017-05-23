@@ -9,5 +9,6 @@ namespace BillRecordingSystem.Classes
     public static class UserInfo
     {
         public static int UserId { get; set; } = -1;
+        public static int LoginId { get; set; } = -1;
     }
 }

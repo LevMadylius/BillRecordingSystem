@@ -42,5 +42,12 @@ namespace BillRecordingSystem
                 MessageBox.Show("Wrong username or password. Please, try again");
             }
         }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
+            this.Close();
+        }
     }
 }
