@@ -173,5 +173,49 @@ namespace BillRecordingSystem.DB
 
             }
         }
+
+        public static List<Expences> GetFilteredListExpances(int userId,DateTime dateFrom, DateTime dateTo, string type)
+        {
+            using (var db = new DBExpenceContext())
+            {
+                var query = (from e in db.Expences
+                             join t in db.ExpenceTypes on e.IdExpenceType equals t.IdExpenceType
+                             where e.IdUser == userId && e.BillDate >= dateFrom &&
+                                   e.BillDate <= dateTo && t.Name == type
+                             select e).ToList();
+
+                foreach (var el in query)
+                {
+                    el.ExpenceTypes = (from t in db.ExpenceTypes
+                                       where t.IdExpenceType == el.IdExpenceType
+                                       select t).Single();
+                }
+
+
+                return query;
+
+            }
+        }
+
+        public static List<Expences> GetFilteredListExpances(int userId, DateTime dateFrom, DateTime dateTo)
+        {
+            using (var db = new DBExpenceContext())
+            {
+                var query = (from e in db.Expences
+                             where e.IdUser == userId && e.BillDate >= dateFrom && e.BillDate <= dateTo
+                             select e).ToList();
+
+                foreach (var el in query)
+                {
+                    el.ExpenceTypes = (from t in db.ExpenceTypes
+                                       where t.IdExpenceType == el.IdExpenceType
+                                       select t).Single();
+                }
+
+
+                return query;
+
+            }
+        }
     }
 }

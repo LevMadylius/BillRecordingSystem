@@ -100,7 +100,7 @@ namespace BillRecordingSystem
             }
             else
             {
-                lastName = boxFirstName.Text;
+                lastName = boxLastName.Text;
             }
 
             int income;
@@ -134,14 +134,14 @@ namespace BillRecordingSystem
                 loginInfo = GetLoginInfoFromData();
                 user = GetUserFromData();
                 SetImagePath(ref user);
-                // fix bug with edit userId
+                
                 Queries.RegisterOrUpdate(user, loginInfo);
                 
                 UserInfo.UserId = user.IdUser;
                 UserInfo.LoginId = loginInfo.IdLoginInfo;
 
-                MessageBox.Show("Registration successfully completed.");
-                this.Close();
+                MessageBox.Show("Successfull.");
+                
                 if (_mainWindow != null)
                 {
                     _mainWindow.UpdateUserInfo();
@@ -152,12 +152,12 @@ namespace BillRecordingSystem
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();
                 }
-                
 
+                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Incorrect parameters,please try again/r/nError message: " + ex.Message);
+                MessageBox.Show("Incorrect parameters,please try again\r\nError message: " + ex.Message);
             }
         }
 

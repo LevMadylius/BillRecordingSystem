@@ -46,16 +46,24 @@ namespace BillRecordingSystem
             }
         }
 
+        private void SetFromToPickers(DateTime from, DateTime to)
+        {
+           
+            dateFrom.SelectedDate = from;
+            dateTo.SelectedDate = to; 
+        }
+
         public void UpdateUserInfo()
         {
             var user = Queries.GetUserById(UserInfo.UserId);
             //Find another way to assign
             lblFullName.Content = user.FirstName+ " " + user.LastName;
             lblSalary.Content = user.MonthIncome;
-            //fix - maybe it is fixed
-            if(/*user.PictureLink != null && */File.Exists(user.PictureLink))
+            
+            if(File.Exists(user.PictureLink))
                 ProfileImage.Source = new BitmapImage(new Uri(user.PictureLink));
         }
+
         // All expences of current user.
         private async void SetListExpances()
         {
@@ -72,9 +80,29 @@ namespace BillRecordingSystem
             ew.Show();
         }
 
-        private void btnFilter_Click(object sender, RoutedEventArgs e)
+        private async void btnFilter_Click(object sender, RoutedEventArgs e)
         {
+            DateTime dFrom = dateFrom.SelectedDate.Value;
+            DateTime dTo = dateTo.SelectedDate.Value;
+            if (comboType.Text.Contains("All"))
+            {
+                
+                var list = await Task.Run<List<Expences>>
+                    (
+                        () => Queries.GetFilteredListExpances(UserInfo.UserId, dFrom, dTo)
+                    );
+                gridExpences.ItemsSource = list;
+            }
+            else
+            {
+                string type = comboType.Text;
+                var list = await Task.Run<List<Expences>>
+                                    (
+                                        () => Queries.GetFilteredListExpances(UserInfo.UserId, dFrom, dTo,type)
+                                    );
+                gridExpences.ItemsSource = list;
 
+            }
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
@@ -102,6 +130,25 @@ namespace BillRecordingSystem
         {
             RegistrationWindow registrationWindow = new RegistrationWindow(this);
             registrationWindow.Show();
+        }
+        
+
+        private void comboBoxTimePeriod_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            string condition = comboBoxTimePeriod.Text;
+
+            switch (condition)
+            {
+                case "Last week":
+                    SetFromToPickers(DateHelper.FirstDayWeek(), DateTime.Today);
+                    break;
+                case "Last month":
+                    SetFromToPickers(DateHelper.FirstDayMonth(), DateTime.Today);
+                    break;
+                case "All time":
+                    SetFromToPickers();
+                    break;
+            }
         }
     }
 }

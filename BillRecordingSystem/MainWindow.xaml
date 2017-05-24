@@ -32,18 +32,16 @@
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="369" Margin="177,-2,0,0" VerticalAlignment="Top" Width="465">
             <TabItem Header="My Expances" Margin="0,-2,-118,0">
                 <Grid Background="White">
-                    <ComboBox x:Name="comboBoxTimePeriod" SelectedIndex="2" HorizontalAlignment="Left" Margin="12,11,0,0" VerticalAlignment="Top" Width="120">
+                    <ComboBox x:Name="comboBoxTimePeriod" SelectedIndex="2" HorizontalAlignment="Left" Margin="12,11,0,0" VerticalAlignment="Top" Width="120" IsMouseCapturedChanged="comboBoxTimePeriod_IsMouseCapturedChanged">
                         <ComboBoxItem Content="Last week"/>
                         <ComboBoxItem Content="Last month"/>
                         <ComboBoxItem Content="All time"/>
-                        <ComboBoxItem Content="Custom"/>
-
                     </ComboBox>
                     <DatePicker Name="dateFrom" HorizontalAlignment="Left" Margin="187,10,0,0" VerticalAlignment="Top" Width="104"/>
                     <DatePicker Name="dateTo" HorizontalAlignment="Left" Margin="342,9,0,0" VerticalAlignment="Top" Width="105"/>
                     <Label x:Name="lblFrom" Content="From:" HorizontalAlignment="Left" Margin="138,8,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="blbTo" Content="Up to:" HorizontalAlignment="Left" Margin="297,8,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="gridExpences" SelectedIndex="1" HorizontalAlignment="Left" Margin="12,91,0,0" VerticalAlignment="Top" Height="240" Width="435" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" MouseDoubleClick="gridExpences_MouseDoubleClick">
+                    <DataGrid x:Name="gridExpences" IsReadOnly="True" SelectedIndex="1" HorizontalAlignment="Left" Margin="12,91,0,0" VerticalAlignment="Top" Height="240" Width="435" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" MouseDoubleClick="gridExpences_MouseDoubleClick">
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Binding="{Binding Name}"  Header="Name" IsReadOnly="True" Width="4*" CanUserResize="False"/>
@@ -52,7 +50,7 @@
                             <DataGridTextColumn Binding="{Binding BillDate}" Header="Date" Width="4*"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <ComboBox x:Name="comboType" HorizontalAlignment="Left" Margin="12,49,0,0" VerticalAlignment="Top" Width="120">
+                    <ComboBox x:Name="comboType" SelectedIndex="0" HorizontalAlignment="Left" Margin="12,49,0,0" VerticalAlignment="Top" Width="120">
                         <ComboBoxItem Content="All"/>
                         <ComboBoxItem Content="Food&amp;Drinks"/>
                         <ComboBoxItem Content="House"/>
