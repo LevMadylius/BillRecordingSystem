@@ -76,7 +76,7 @@ namespace BillRecordingSystem
             var user = Queries.GetUserById(UserInfo.UserId);
             
             lblFullName.Content = $"{user.FirstName} {user.LastName}";
-            lblSalary.Content = user.MonthIncome;
+            lblSalary.Content += $" {user.MonthIncome}";
             
             if(File.Exists(user.PictureLink))
                 ProfileImage.Source = new BitmapImage(new Uri(user.PictureLink));

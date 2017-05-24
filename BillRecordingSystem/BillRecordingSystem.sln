@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillRecordingSystem.DB", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillRecordingSystem.Classes", "..\BillRecordingSystem.Classes\BillRecordingSystem.Classes.csproj", "{B2B2D119-C02B-4E4D-84E3-F7812AE3A62B}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BillRecordingSystem.Setup", "..\BillRecordingSystem.Setup\BillRecordingSystem.Setup.vdproj", "{760DA301-3C81-4FCA-9709-FC3F49D0A285}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,9 @@ Global
 		{B2B2D119-C02B-4E4D-84E3-F7812AE3A62B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2B2D119-C02B-4E4D-84E3-F7812AE3A62B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2B2D119-C02B-4E4D-84E3-F7812AE3A62B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{760DA301-3C81-4FCA-9709-FC3F49D0A285}.Debug|Any CPU.ActiveCfg = Debug
+		{760DA301-3C81-4FCA-9709-FC3F49D0A285}.Debug|Any CPU.Build.0 = Debug
+		{760DA301-3C81-4FCA-9709-FC3F49D0A285}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

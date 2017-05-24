@@ -35,14 +35,17 @@ namespace BillRecordingSystem
         {
             InitializeComponent();
 
-            
+            _mainWindow = mainWindow;
         }
 
         private void btnDeny_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
+            if (_mainWindow == null)
+            {
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.Show();
+            }
         }
 
         private LoginInfo GetLoginInfoFromData()
