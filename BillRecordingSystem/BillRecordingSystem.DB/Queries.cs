@@ -45,20 +45,19 @@ namespace BillRecordingSystem.DB
             }
         }
 
-        public static void RegisterUser(Users user, LoginInfo loginInfo)
+        public static void RegisterOrUpdate(Users user, LoginInfo loginInfo)
         {
             using (var db = new DBExpenceContext())
             {
 
                 var userId = user.IdUser;
-                //var b = db.Users.Any(e => e.IdUser == userId);
-
-
-                if (db.LoginInfo.Any(li => li.LoginName == loginInfo.LoginName))
+               //check
+                if (db.LoginInfo.Any(li => li.LoginName == loginInfo.LoginName) && userId != -1)
                     throw new Exception("User with this login name already exists");
 
                 if (db.Users.Any(e => e.IdUser == userId))
                 {
+                    loginInfo.IdUser = userId;
                     db.Users.Attach(user);
                     db.Entry(user).State = System.Data.Entity.EntityState.Modified;
 
@@ -78,6 +77,18 @@ namespace BillRecordingSystem.DB
             }
         }
 
+        public static Users GetUserById(int userId)
+        {
+            using (var db = new DBExpenceContext())
+            {
+                var query = (from u in db.Users
+                             where u.IdUser == userId
+                             select u).SingleOrDefault();
+
+                return query;
+            }
+        }
+        // For user login
         public static int GetUserId(string login,string password)
         {
             using (var db = new DBExpenceContext())
@@ -85,10 +96,23 @@ namespace BillRecordingSystem.DB
                 var query = (from li in db.LoginInfo
                             where li.Pass == password && li.LoginName == login
                             select li).SingleOrDefault();
-                var loginInfo = query as LoginInfo;
-                if (loginInfo == null)
+                
+                if (query == null)
                     throw new Exception();
-                return loginInfo.IdUser;
+                
+                return query.IdUser;
+            }
+        }
+
+        public static int GetLoginIdByUserId(int userId)
+        {
+            using (var db = new DBExpenceContext())
+            {
+                var query = (from li in db.LoginInfo
+                             where li.IdUser == userId
+                             select li).Single();
+
+                return query.IdLoginInfo;
             }
         }
 

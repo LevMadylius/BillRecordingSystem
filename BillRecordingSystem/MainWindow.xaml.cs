@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BillRecordingSystem.DB;
 using BillRecordingSystem.Classes;
+using System.IO;
+
 namespace BillRecordingSystem
 {
     /// <summary>
@@ -29,7 +31,7 @@ namespace BillRecordingSystem
             InitializeComponent();
             SetFromToPickers();
             SetListExpances();
-
+            UpdateUserInfo();
         }
 
         private void SetFromToPickers()
@@ -42,6 +44,17 @@ namespace BillRecordingSystem
                 dateFrom.SelectedDate = EarliestExpenceDate;
                 dateTo.SelectedDate = LatestExpenceDate;
             }
+        }
+
+        public void UpdateUserInfo()
+        {
+            var user = Queries.GetUserById(UserInfo.UserId);
+            //Find another way to assign
+            lblFullName.Content = user.FirstName+ " " + user.LastName;
+            lblSalary.Content = user.MonthIncome;
+            //fix - maybe it is fixed
+            if(/*user.PictureLink != null && */File.Exists(user.PictureLink))
+                ProfileImage.Source = new BitmapImage(new Uri(user.PictureLink));
         }
         // All expences of current user.
         private async void SetListExpances()
@@ -83,6 +96,12 @@ namespace BillRecordingSystem
                     expenceWindow.Show();
                 }
             }
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrationWindow registrationWindow = new RegistrationWindow(this);
+            registrationWindow.Show();
         }
     }
 }

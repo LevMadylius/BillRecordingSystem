@@ -23,7 +23,7 @@ namespace BillRecordingSystem
     public partial class RegistrationWindow : Window
     {
         private string imagePath;
-
+        private MainWindow _mainWindow;
         public RegistrationWindow()
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace BillRecordingSystem
         {
             InitializeComponent();
 
-
+            
         }
 
         private void btnDeny_Click(object sender, RoutedEventArgs e)
@@ -69,9 +69,12 @@ namespace BillRecordingSystem
             {
                 password = boxPassword.Password;
             }
+            if (UserInfo.LoginId != -1)
+                result.IdLoginInfo = UserInfo.LoginId;
+
 
             result.LoginName = loginName;
-            result.Pass = password;
+            result.Pass = Encryptor.MD5Hash(password);
 
             return result;
         }
@@ -106,6 +109,9 @@ namespace BillRecordingSystem
                 throw new Exception();
             }
 
+            if(UserInfo.UserId != -1)
+                result.IdUser = UserInfo.UserId;
+
             result.MonthIncome = income;
             result.FirstName = firstName;
             result.LastName = lastName;            
@@ -128,11 +134,26 @@ namespace BillRecordingSystem
                 loginInfo = GetLoginInfoFromData();
                 user = GetUserFromData();
                 SetImagePath(ref user);
-                Queries.RegisterUser(user, loginInfo);
+                // fix bug with edit userId
+                Queries.RegisterOrUpdate(user, loginInfo);
                 
-                UserInfo.LoginId = loginInfo.IdLoginInfo;
                 UserInfo.UserId = user.IdUser;
+                UserInfo.LoginId = loginInfo.IdLoginInfo;
+
                 MessageBox.Show("Registration successfully completed.");
+                this.Close();
+                if (_mainWindow != null)
+                {
+                    _mainWindow.UpdateUserInfo();
+                }
+                else
+                {
+                    // shows main window after registration completed successfully.
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                }
+                
+
             }
             catch (Exception ex)
             {

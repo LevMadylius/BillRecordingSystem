@@ -33,6 +33,7 @@ namespace BillRecordingSystem
             try
             {
                 UserInfo.UserId = Queries.GetUserId(LoginBox.Text, Encryptor.MD5Hash(passwordBox.Password));
+                UserInfo.LoginId = Queries.GetLoginIdByUserId(UserInfo.UserId);
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();

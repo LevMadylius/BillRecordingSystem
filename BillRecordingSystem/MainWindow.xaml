@@ -22,7 +22,7 @@
             <Border BorderBrush="Black" BorderThickness="2" Height="120" Width="120" Margin="29,14,29,235">
                 <Image x:Name="ProfileImage" HorizontalAlignment="Left" Height="120"  VerticalAlignment="Top" Width="120"/>
             </Border>
-            <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Background="Transparent" Margin="29,152,0,0" VerticalAlignment="Top" Width="117"/>
+            <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Background="Transparent" Margin="29,152,0,0" VerticalAlignment="Top" Width="117" Click="btnEdit_Click"/>
             <Label x:Name="lblFullName" Content="'Full name here'" Margin="30,192,34,151" />
             <Label x:Name="lblSalary" Content="Income: " Margin="30,231,34,112"/>
             <Label x:Name="lblTotalExpence" Content="Total Spent" Margin="30,269,33,74"/>
