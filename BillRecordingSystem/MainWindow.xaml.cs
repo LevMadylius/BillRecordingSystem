@@ -32,6 +32,8 @@ namespace BillRecordingSystem
             SetFromToPickers();
             SetListExpances();
             UpdateUserInfo();
+            UpdateStatistics();
+            SetTotalSpent();
         }
 
         private void SetFromToPickers()
@@ -43,21 +45,37 @@ namespace BillRecordingSystem
 
                 dateFrom.SelectedDate = EarliestExpenceDate;
                 dateTo.SelectedDate = LatestExpenceDate;
+
+                dateFromStatictics.SelectedDate = EarliestExpenceDate;
+                dateToStatictics.SelectedDate = LatestExpenceDate;
             }
+        }
+
+        private void SetTotalSpent()
+        {
+            DateTime EarliestExpenceDate = Queries.GetDateOfEarliestExpence(UserInfo.UserId);
+            DateTime LatestExpenceDate = Queries.GetDateOfLatestExpence(UserInfo.UserId);
+
+            int money = StatisticsHelper.GetSpentForPeriod(EarliestExpenceDate, LatestExpenceDate, UserInfo.UserId);
+
+            lblTotalExpence.Content += $" {money}";
         }
 
         private void SetFromToPickers(DateTime from, DateTime to)
         {
            
             dateFrom.SelectedDate = from;
-            dateTo.SelectedDate = to; 
+            dateTo.SelectedDate = to;
+
+            dateFromStatictics.SelectedDate = from;
+            dateToStatictics.SelectedDate = to;
         }
 
         public void UpdateUserInfo()
         {
             var user = Queries.GetUserById(UserInfo.UserId);
-            //Find another way to assign
-            lblFullName.Content = user.FirstName+ " " + user.LastName;
+            
+            lblFullName.Content = $"{user.FirstName} {user.LastName}";
             lblSalary.Content = user.MonthIncome;
             
             if(File.Exists(user.PictureLink))
@@ -136,6 +154,62 @@ namespace BillRecordingSystem
         private void comboBoxTimePeriod_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             string condition = comboBoxTimePeriod.Text;
+
+            switch (condition)
+            {
+                case "Last week":
+                    SetFromToPickers(DateHelper.FirstDayWeek(), DateTime.Today);
+                    break;
+                case "Last month":
+                    SetFromToPickers(DateHelper.FirstDayMonth(), DateTime.Today);
+                    break;
+                case "All time":
+                    SetFromToPickers();
+                    break;
+            }
+        }
+
+        private void UpdateStatistics()
+        {
+            DateTime datefrom = dateFromStatictics.SelectedDate.Value;
+            DateTime dateTo = dateToStatictics.SelectedDate.Value;
+
+
+            try
+            {
+                var mostExpensive = Queries.GetMostExpencive(UserInfo.UserId, datefrom, dateTo);                
+
+                lblMostExpensiveproduct.Content = $"Most expensive is {mostExpensive.Name}, price: {mostExpensive.MonthAmount}, date: {mostExpensive.BillDate}";
+            }
+            catch
+            {
+                lblMostExpensiveproduct.Content = "No expences for this period";
+            }
+
+            try
+            {
+                var mostPopularCategory = Queries.GetMostPopularCategory(UserInfo.UserId, datefrom, dateTo);
+                
+                lblMostPopularCategory.Content = $"Most popular category is {mostPopularCategory.Name}";
+            }
+            catch
+            {
+                lblMostExpensiveproduct.Content = "No expences for this period";
+            }
+
+            var spentForPeriod = StatisticsHelper.GetSpentForPeriod(datefrom, dateTo, UserInfo.UserId);
+
+            lblSpentForPeriod.Content = $"Spent money for this period {spentForPeriod}";
+        }
+
+        private void btnFilterStatictics_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateStatistics();
+        }
+
+        private void comboBoxTimePeriod_Copy_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            string condition = comboBoxTimePeriod_Copy.Text;
 
             switch (condition)
             {

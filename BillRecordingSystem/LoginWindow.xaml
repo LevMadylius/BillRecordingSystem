@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BillRecordingSystem"
         mc:Ignorable="d"
-        Title="Login Window" Height="262.105" Width="297.369">
+        Title="Login Window" Height="262.105" Width="297.369"
+        Icon="Images/icon.png"
+        ResizeMode="NoResize">
     <Grid>
         <Label x:Name="labelLogin" Content="Login" HorizontalAlignment="Left" Margin="47,44,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1Password" Content="Password" HorizontalAlignment="Left" Margin="47,84,0,0" VerticalAlignment="Top"/>

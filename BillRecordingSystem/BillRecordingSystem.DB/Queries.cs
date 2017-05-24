@@ -217,5 +217,46 @@ namespace BillRecordingSystem.DB
 
             }
         }
+
+        public static ExpenceTypes GetMostPopularCategory(int userId, DateTime dateFrom, DateTime dateTo)
+        {
+            if (GetDateOfLatestExpence(userId) < dateFrom)
+               throw new Exception(); 
+
+            using (var db = new DBExpenceContext())
+            {
+                var mostPopularCategoryId = db.Expences
+                                        .Where(e => e.IdUser == userId && e.BillDate >= dateFrom && e.BillDate <= dateTo)
+                                        .GroupBy(e => e.IdExpenceType)
+                                        .OrderByDescending(e => e.Count())   
+                                        .Select(g => g.Key)
+                                        .First();
+
+                
+
+                var query = (from t in db.ExpenceTypes
+                             where t.IdExpenceType == mostPopularCategoryId
+                             select t).Single();
+
+                return query;
+            }
+        }
+
+        public static Expences GetMostExpencive(int userId, DateTime dateFrom, DateTime dateTo)
+        {
+            if (dateFrom > dateTo)
+                throw new Exception();
+            using (var db = new DBExpenceContext())
+            {
+                
+                var query = (from e in db.Expences
+                             where e.IdUser == userId && e.BillDate >= dateFrom && e.BillDate <= dateTo
+                             select e)
+                             .OrderByDescending(e => e.MonthAmount)
+                             .First();
+
+                return query;
+            }
+        }
     }
 }

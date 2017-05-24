@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BillRecordingSystem"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="500" Width="300">
+        Title="RegistrationWindow" Height="500" Width="300"
+        Icon="Images/icon.png"
+        ResizeMode="NoResize">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" Height="120" Width="120" Margin="86,18,86,331">
-            <Image x:Name="ProfileImage" HorizontalAlignment="Left" Height="120"  VerticalAlignment="Top" Width="120"/>
+            <Image x:Name="ProfileImage" Source="Images/default.png" HorizontalAlignment="Left" Height="118"  VerticalAlignment="Top" Width="118" Margin="0,0,-2,-2"/>
         </Border>
         <Button x:Name="btnImage" Content="Open" Background="Transparent" HorizontalAlignment="Left" Margin="86,151,0,0" VerticalAlignment="Top" Width="119" Click="btnImage_Click"/>
         <Label x:Name="lblLogin" Content="Login Name" HorizontalAlignment="Left" Margin="27,199,0,0" VerticalAlignment="Top"/>

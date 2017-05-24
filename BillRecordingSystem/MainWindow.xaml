@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BillRecordingSystem"
         mc:Ignorable="d"
         Title="Bill Recording System" Height="400" Width="650"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="Images/icon.png">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="369" VerticalAlignment="Top" Width="178">
             <Rectangle HorizontalAlignment="Left" Height="369" VerticalAlignment="Top" Width="178">
@@ -20,7 +21,7 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Border BorderBrush="Black" BorderThickness="2" Height="120" Width="120" Margin="29,14,29,235">
-                <Image x:Name="ProfileImage" HorizontalAlignment="Left" Height="120"  VerticalAlignment="Top" Width="120"/>
+                <Image x:Name="ProfileImage" Source="Images/default.png" HorizontalAlignment="Left" Height="120"  VerticalAlignment="Top" Width="120"/>
             </Border>
             <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Background="Transparent" Margin="29,152,0,0" VerticalAlignment="Top" Width="117" Click="btnEdit_Click"/>
             <Label x:Name="lblFullName" Content="'Full name here'" Margin="30,192,34,151" />
@@ -41,7 +42,7 @@
                     <DatePicker Name="dateTo" HorizontalAlignment="Left" Margin="342,9,0,0" VerticalAlignment="Top" Width="105"/>
                     <Label x:Name="lblFrom" Content="From:" HorizontalAlignment="Left" Margin="138,8,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="blbTo" Content="Up to:" HorizontalAlignment="Left" Margin="297,8,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="gridExpences" IsReadOnly="True" SelectedIndex="1" HorizontalAlignment="Left" Margin="12,91,0,0" VerticalAlignment="Top" Height="240" Width="435" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" MouseDoubleClick="gridExpences_MouseDoubleClick">
+                    <DataGrid x:Name="gridExpences" IsReadOnly="True" SelectedIndex="1" HorizontalAlignment="Left" Margin="12,75,0,0" VerticalAlignment="Top" Height="240" Width="435" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False" MouseDoubleClick="gridExpences_MouseDoubleClick">
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Binding="{Binding Name}"  Header="Name" IsReadOnly="True" Width="4*" CanUserResize="False"/>
@@ -60,11 +61,27 @@
                     </ComboBox>
                     <Button x:Name="btnFilter" Content="Filter" HorizontalAlignment="Left" Margin="343,48,0,0" VerticalAlignment="Top" Width="102" Click="btnFilter_Click"/>
                     <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="224,48,0,0" VerticalAlignment="Top" Width="102" Click="btnRefresh_Click" />
+                    <Label x:Name="label" Content="Hint: double click on expence to show details" HorizontalAlignment="Left" Margin="8,317,0,0" VerticalAlignment="Top" FontStyle="Italic" FontSize="10"/>
 
                 </Grid>
             </TabItem>
             <TabItem Header="Statictics" Margin="116,-2,-230,0" >
-                <Grid Background="White"/>
+                <Grid Background="White">
+                    <Label x:Name="lblSpentForPeriod" Content="Label" HorizontalAlignment="Left" Margin="45,154,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblMostPopularCategory" Content="Label" HorizontalAlignment="Left" Margin="45,198,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblMostExpensiveproduct" Content="Label" HorizontalAlignment="Left" Margin="45,240,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboBoxTimePeriod_Copy" SelectedIndex="2" HorizontalAlignment="Left" Margin="12,59,0,0" VerticalAlignment="Top" Width="120" IsMouseCapturedChanged="comboBoxTimePeriod_Copy_IsMouseCapturedChanged" >
+                    <ComboBoxItem Content="Last week"/>
+                    <ComboBoxItem Content="Last month"/>
+                    <ComboBoxItem Content="All time"/>
+                    </ComboBox>
+                    <DatePicker x:Name="dateFromStatictics" HorizontalAlignment="Left" Margin="187,58,0,0" VerticalAlignment="Top" Width="104"/>
+                    <DatePicker x:Name="dateToStatictics" HorizontalAlignment="Left" Margin="342,57,0,0" VerticalAlignment="Top" Width="105"/>
+                    <Label x:Name="lblFromStatictics" Content="From:" HorizontalAlignment="Left" Margin="138,56,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="blbToStatictics" Content="Up to:" HorizontalAlignment="Left" Margin="297,56,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnFilterStatictics" Content="Filter" HorizontalAlignment="Left" Margin="343,96,0,0" VerticalAlignment="Top" Width="102" Click="btnFilterStatictics_Click"/>
+
+                </Grid>
             </TabItem>
         </TabControl>
 

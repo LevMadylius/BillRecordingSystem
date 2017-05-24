@@ -43,7 +43,14 @@
     <Compile Include="DateHelper.cs" />
     <Compile Include="Encryptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatisticsHelper.cs" />
     <Compile Include="UserInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BillRecordingSystem\BillRecordingSystem.DB\BillRecordingSystem.DB.csproj">
+      <Project>{9AC89707-285B-4D62-A20F-2E50A210F421}</Project>
+      <Name>BillRecordingSystem.DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
